@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmu5mjh3a65t2"]
+[gd_scene load_steps=7 format=3 uid="uid://bmu5mjh3a65t2"]
 
 [ext_resource type="Texture2D" uid="uid://1xps7kycymk2" path="res://art/background.png" id="1_ix3g0"]
 [ext_resource type="Script" uid="uid://7amx2dnihu1a" path="res://scenes/blind/blind.gd" id="1_pcol3"]
+[ext_resource type="PackedScene" uid="uid://cqddt278wal78" path="res://scenes/playing_card_ui.tscn" id="2_8asx0"]
+[ext_resource type="Resource" uid="uid://cqu0dkiv5v1mm" path="res://test_resources/test_playing_card.tres" id="4_sl2xd"]
+[ext_resource type="Script" uid="uid://dxytpi6gpwkdh" path="res://scenes/blind/card_play_area.gd" id="5_s3l8s"]
+[ext_resource type="Script" uid="uid://cfr0qks5ifkf6" path="res://scenes/blind/score.gd" id="6_n7sra"]
 
 [node name="Blind" type="Node2D"]
 script = ExtResource("1_pcol3")
@@ -16,19 +20,107 @@ centered = false
 
 [node name="Hand" type="HBoxContainer" parent="BlindUI"]
 unique_name_in_owner = true
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
+anchor_bottom = 0.5
 offset_left = -75.0
-offset_top = -30.0
+offset_top = 21.0
 offset_right = 75.0
+offset_bottom = 51.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 alignment = 1
+
+[node name="PlayingCardUI" parent="BlindUI/Hand" instance=ExtResource("2_8asx0")]
+layout_mode = 2
+card = ExtResource("4_sl2xd")
+
+[node name="PlayingCardUI2" parent="BlindUI/Hand" instance=ExtResource("2_8asx0")]
+layout_mode = 2
+card = ExtResource("4_sl2xd")
+
+[node name="PlayingCardUI3" parent="BlindUI/Hand" instance=ExtResource("2_8asx0")]
+layout_mode = 2
+card = ExtResource("4_sl2xd")
+
+[node name="PlayingCardUI4" parent="BlindUI/Hand" instance=ExtResource("2_8asx0")]
+layout_mode = 2
+card = ExtResource("4_sl2xd")
+
+[node name="PlayingCardUI5" parent="BlindUI/Hand" instance=ExtResource("2_8asx0")]
+layout_mode = 2
+card = ExtResource("4_sl2xd")
+
+[node name="CardPlayArea" type="HBoxContainer" parent="BlindUI"]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -29.0
+offset_right = 20.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_s3l8s")
 
 [node name="HandType" type="Label" parent="BlindUI"]
 unique_name_in_owner = true
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="PlayAndDiscardPanel" type="HBoxContainer" parent="BlindUI"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -29.0
+offset_top = -18.0
+offset_right = 83.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="BlindUI/PlayAndDiscardPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Play"
+
+[node name="DiscardButton" type="Button" parent="BlindUI/PlayAndDiscardPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Discard"
+
+[node name="Score" type="HBoxContainer" parent="BlindUI"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 46.0
+offset_bottom = 20.0
+grow_vertical = 2
+script = ExtResource("6_n7sra")
+
+[node name="Chips" type="Label" parent="BlindUI/Score"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "40"
+
+[node name="x" type="Label" parent="BlindUI/Score"]
+layout_mode = 2
+text = "x"
+
+[node name="Mult" type="Label" parent="BlindUI/Score"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "4"
+
+[connection signal="pressed" from="BlindUI/PlayAndDiscardPanel/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="BlindUI/PlayAndDiscardPanel/DiscardButton" to="." method="_on_discard_button_pressed"]

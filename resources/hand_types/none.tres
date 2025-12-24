@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="None" load_steps=2 format=3 uid="uid://wmvnwcatm25j"]
+
+[ext_resource type="Script" uid="uid://c2bdlcplabujn" path="res://resources/hand_types/none.gd" id="1_4ub1c"]
+
+[resource]
+script = ExtResource("1_4ub1c")
+display_name = "None"
+metadata/_custom_type_script = "uid://vs6trumdeha8"

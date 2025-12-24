@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="PlayingCard" load_steps=2 format=3 uid="uid://cqu0dkiv5v1mm"]
+
+[ext_resource type="Script" uid="uid://ea6wvxoio8h4" path="res://resources/playing_card.gd" id="1_lwog4"]
+
+[resource]
+script = ExtResource("1_lwog4")
+metadata/_custom_type_script = "uid://ea6wvxoio8h4"

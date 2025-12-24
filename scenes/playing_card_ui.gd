@@ -3,11 +3,19 @@ extends Control
 
 @export var selected := false
 @export var card: PlayingCard
-@onready var label: Label = $Label
 
+@onready var label: Label = $Label
 @onready var color: ColorRect = $Color
 
 func _ready():
+
+	# makes the card scale from the center when popping	
+	pivot_offset = size / 2
+	
+	# magically prevents the cards from resizing when the reparent from the hand to the card play area
+	size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	
 	if !is_node_ready():
 		await ready
 	

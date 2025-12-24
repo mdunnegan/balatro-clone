@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Pair" load_steps=2 format=3 uid="uid://bgsy6dj1uluv2"]
+
+[ext_resource type="Script" uid="uid://dras2s3qbr5tx" path="res://resources/hand_types/pair.gd" id="1_hsvfx"]
+
+[resource]
+script = ExtResource("1_hsvfx")
+hand_kind = 2
+display_name = "Pair"
+base_chips = 20
+base_mult = 2
+metadata/_custom_type_script = "uid://vs6trumdeha8"

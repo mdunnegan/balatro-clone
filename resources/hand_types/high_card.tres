@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="HighCard" load_steps=2 format=3 uid="uid://bxh8jpartcbf1"]
+
+[ext_resource type="Script" uid="uid://dwt5nw8es4oe1" path="res://resources/hand_types/high_card.gd" id="1_7s76g"]
+
+[resource]
+script = ExtResource("1_7s76g")
+hand_kind = 1
+display_name = "High Card"
+base_mult = 1
+base_chips = 15
+metadata/_custom_type_script = "uid://vs6trumdeha8"
