@@ -21,18 +21,19 @@ func _ready() -> void:
 	if !hand.is_node_ready():
 		await ready
 	
-	# clear the placeholders
+	# clear the placeholder cards
 	for c in hand.get_children():
 		c.queue_free()
 	
 	Events.playing_card_toggled.connect(_on_playing_card_toggled)
+	Events.hand_scored.connect(_on_hand_scored)
 	
 	# initialize standard deck
 	deck = CardPile.new()
 	deck.build_standard_deck()
 	deck.shuffle()
 	
-	draw_hand(max_hand_size)
+	draw_cards(max_hand_size)
 	
 func _on_playing_card_toggled(card: PlayingCardUI, selected: bool) -> void:
 	if selected:
@@ -42,28 +43,32 @@ func _on_playing_card_toggled(card: PlayingCardUI, selected: bool) -> void:
 	
 	resolve_hand_type()
 
-func draw_hand(num_to_draw: int) -> void:
-	print("drawing %s cards" % num_to_draw)
-
+func draw_cards(num_to_draw: int) -> void:
 	for i in range(num_to_draw):
 		var playing_card_ui = PLAYING_CARD_UI.instantiate()
 		playing_card_ui.card = deck.draw_card()
 		hand.add_child(playing_card_ui)	
 
 func _on_play_button_pressed() -> void:
-	var num_cards_to_draw := selected_cards.size()
-	print("pressed play button")
-
-	play_hand()
-
-func play_hand() -> void:
 	Events.hand_played.emit(selected_cards)
+
+func _on_discard_button_pressed() -> void:
+	var num_selected = selected_cards.size()
+	for card: PlayingCardUI in selected_cards:
+		card.queue_free()
+	selected_cards = []
+	draw_cards(num_selected)
+
+func _on_hand_scored() -> void:
+	card_play_area.clear_cards()
+	var num_selected = selected_cards.size()
+	selected_cards = []
+	draw_cards(num_selected)
 	
 func create_hand_types() -> void:
 	hand_types.append(preload("res://resources/hand_types/pair.tres"))
 	hand_types.append(preload("res://resources/hand_types/high_card.tres"))
-	
-	# excluded "none" because we don't want to consider this when showing the name
+	hand_types.append(preload("res://resources/hand_types/none.tres"))
 
 func resolve_hand_type() -> void:
 	for hand_type: HandType in hand_types:

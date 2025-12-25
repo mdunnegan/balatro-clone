@@ -1,5 +1,5 @@
 class_name None
 extends HandType
 
-func matches(cards: Array[PlayingCardUI]) -> bool:
+func matches(_cards: Array[PlayingCardUI]) -> bool:
 	return true

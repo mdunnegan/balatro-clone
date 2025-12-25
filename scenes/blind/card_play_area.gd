@@ -13,7 +13,7 @@ func _on_hand_played(played_cards: Array[PlayingCardUI]) -> void:
 		
 	await get_tree().create_timer(CARD_POP_DURATION).timeout
 	
-	# TODO: Determine scoring cards...
+	# TODO: Determine scoring cards
 
 	for card in played_cards:
 		# TODO: make a number appear above each card, and add that number to Chips
@@ -28,6 +28,10 @@ func _on_hand_played(played_cards: Array[PlayingCardUI]) -> void:
 			 .set_ease(Tween.EASE_IN)
 			
 		Events.card_scored.emit(card)
-
-		# wait before doing the next card
 		await tween.finished
+		
+	Events.hand_scored.emit()
+
+func clear_cards() -> void:
+	for card: PlayingCardUI in get_children():
+		card.queue_free()

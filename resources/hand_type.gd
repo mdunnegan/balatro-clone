@@ -19,6 +19,5 @@ enum HandKind {
 @export var base_chips: int
 @export var base_mult: int
 
-func matches(cards: Array[PlayingCardUI]) -> bool:
-	# overridden per hand
+func matches(_cards: Array[PlayingCardUI]) -> bool:
 	return false

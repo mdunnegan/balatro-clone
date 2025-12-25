@@ -8,7 +8,6 @@ extends Control
 @onready var color: ColorRect = $Color
 
 func _ready():
-
 	# makes the card scale from the center when popping	
 	pivot_offset = size / 2
 	

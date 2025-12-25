@@ -68,11 +68,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_s3l8s")
 
-[node name="HandType" type="Label" parent="BlindUI"]
-unique_name_in_owner = true
-offset_right = 40.0
-offset_bottom = 23.0
-
 [node name="PlayAndDiscardPanel" type="HBoxContainer" parent="BlindUI"]
 anchors_preset = 7
 anchor_left = 0.5
@@ -98,26 +93,39 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Discard"
 
-[node name="Score" type="HBoxContainer" parent="BlindUI"]
+[node name="HandType" type="Label" parent="BlindUI"]
+unique_name_in_owner = true
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Score" type="GridContainer" parent="BlindUI"]
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -20.0
+offset_top = -35.0
 offset_right = 46.0
-offset_bottom = 20.0
+offset_bottom = 15.0
 grow_vertical = 2
 script = ExtResource("6_n7sra")
 
-[node name="Chips" type="Label" parent="BlindUI/Score"]
+[node name="TotalScore" type="Label" parent="BlindUI/Score"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BlindUI/Score"]
+layout_mode = 2
+
+[node name="Chips" type="Label" parent="BlindUI/Score/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "40"
 
-[node name="x" type="Label" parent="BlindUI/Score"]
+[node name="x" type="Label" parent="BlindUI/Score/HBoxContainer"]
 layout_mode = 2
 text = "x"
 
-[node name="Mult" type="Label" parent="BlindUI/Score"]
+[node name="Mult" type="Label" parent="BlindUI/Score/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "4"

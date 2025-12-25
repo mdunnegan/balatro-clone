@@ -7,3 +7,4 @@ signal hand_discarded(cards: Array[PlayingCardUI])
 
 signal card_scored(card: PlayingCardUI)
 signal hand_type_changed(hand_type: HandType)
+signal hand_scored
