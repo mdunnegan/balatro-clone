@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FourOfAKind" load_steps=2 format=3 uid="uid://24rvibgqiado"]
+
+[ext_resource type="Script" uid="uid://cvxqx1u2ko035" path="res://resources/hand_types/four_of_a_kind.gd" id="1_ista0"]
+
+[resource]
+script = ExtResource("1_ista0")
+hand_kind = 8
+display_name = "Four Of A Kind"
+base_chips = 60
+base_mult = 7
+metadata/_custom_type_script = "uid://vs6trumdeha8"

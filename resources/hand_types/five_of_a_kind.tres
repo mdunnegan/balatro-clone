@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FiveOfAKind" load_steps=2 format=3 uid="uid://bfmap3l2oqsnj"]
+
+[ext_resource type="Script" uid="uid://cc31ns6f7clfq" path="res://resources/hand_types/five_of_a_kind.gd" id="1_1rhq0"]
+
+[resource]
+script = ExtResource("1_1rhq0")
+hand_kind = 10
+display_name = "Five Of A Kind"
+base_chips = 120
+base_mult = 12
+metadata/_custom_type_script = "uid://vs6trumdeha8"

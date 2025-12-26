@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FullHouse" load_steps=2 format=3 uid="uid://1wo07ykbd6or"]
+
+[ext_resource type="Script" uid="uid://cyfmmvlid51mb" path="res://resources/hand_types/full_house.gd" id="1_idf81"]
+
+[resource]
+script = ExtResource("1_idf81")
+hand_kind = 7
+display_name = "Full House"
+base_chips = 40
+base_mult = 4
+metadata/_custom_type_script = "uid://vs6trumdeha8"

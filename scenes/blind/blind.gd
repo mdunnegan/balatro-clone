@@ -66,6 +66,16 @@ func _on_hand_scored() -> void:
 	draw_cards(num_selected)
 	
 func create_hand_types() -> void:
+	hand_types.append(preload("res://resources/hand_types/flush_five.tres"))
+	hand_types.append(preload("res://resources/hand_types/flush_house.tres"))
+	hand_types.append(preload("res://resources/hand_types/five_of_a_kind.tres"))
+	hand_types.append(preload("res://resources/hand_types/straight_flush.tres"))
+	hand_types.append(preload("res://resources/hand_types/four_of_a_kind.tres"))
+	hand_types.append(preload("res://resources/hand_types/full_house.tres"))
+	hand_types.append(preload("res://resources/hand_types/flush.tres"))
+	hand_types.append(preload("res://resources/hand_types/straight.tres"))
+	hand_types.append(preload("res://resources/hand_types/three_of_a_kind.tres"))
+	hand_types.append(preload("res://resources/hand_types/two_pair.tres"))
 	hand_types.append(preload("res://resources/hand_types/pair.tres"))
 	hand_types.append(preload("res://resources/hand_types/high_card.tres"))
 	hand_types.append(preload("res://resources/hand_types/none.tres"))

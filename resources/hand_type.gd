@@ -11,7 +11,10 @@ enum HandKind {
 	FLUSH,
 	FULL_HOUSE,
 	FOUR_OF_A_KIND,
-	STRAIGHT_FLUSH
+	STRAIGHT_FLUSH,
+	FIVE_OF_A_KIND,
+	FLUSH_HOUSE,
+	FLUSH_FIVE
 }
 
 @export var hand_kind: HandKind

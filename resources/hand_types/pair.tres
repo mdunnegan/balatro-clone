@@ -6,6 +6,6 @@
 script = ExtResource("1_hsvfx")
 hand_kind = 2
 display_name = "Pair"
-base_chips = 20
+base_chips = 10
 base_mult = 2
 metadata/_custom_type_script = "uid://vs6trumdeha8"

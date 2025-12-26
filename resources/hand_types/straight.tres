@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Straight" load_steps=2 format=3 uid="uid://bm3immtdpn45u"]
+
+[ext_resource type="Script" uid="uid://dv8528x68f88v" path="res://resources/hand_types/straight.gd" id="1_8ajcu"]
+
+[resource]
+script = ExtResource("1_8ajcu")
+hand_kind = 5
+display_name = "Straight"
+base_chips = 30
+base_mult = 4
+metadata/_custom_type_script = "uid://vs6trumdeha8"

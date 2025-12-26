@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FlushFive" load_steps=2 format=3 uid="uid://sgw4mwpc8syu"]
+
+[ext_resource type="Script" uid="uid://dr76evet2fddb" path="res://resources/hand_types/flush_five.gd" id="1_vx07g"]
+
+[resource]
+script = ExtResource("1_vx07g")
+hand_kind = 12
+display_name = "Flush Five"
+base_chips = 160
+base_mult = 16
+metadata/_custom_type_script = "uid://vs6trumdeha8"

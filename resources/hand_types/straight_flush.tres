@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="StraightFlush" load_steps=2 format=3 uid="uid://d1ru4ss0oy0m7"]
+
+[ext_resource type="Script" uid="uid://ccphtvwj44eg0" path="res://resources/hand_types/straight_flush.gd" id="1_600bn"]
+
+[resource]
+script = ExtResource("1_600bn")
+hand_kind = 9
+display_name = "Straight Flush"
+base_chips = 100
+base_mult = 8
+metadata/_custom_type_script = "uid://vs6trumdeha8"

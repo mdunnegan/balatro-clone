@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FlushHouse" load_steps=2 format=3 uid="uid://c45mfjgsflej5"]
+
+[ext_resource type="Script" uid="uid://cc257dmrm0foy" path="res://resources/hand_types/flush_house.gd" id="1_7iufj"]
+
+[resource]
+script = ExtResource("1_7iufj")
+hand_kind = 11
+display_name = "Flush House"
+base_chips = 140
+base_mult = 14
+metadata/_custom_type_script = "uid://vs6trumdeha8"
