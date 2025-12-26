@@ -20,22 +20,26 @@ func matches(cards: Array[PlayingCardUI]) -> bool:
 	return pair_like_ranks >= 2
 
 func scoring_cards(cards: Array[PlayingCardUI]) -> Array[PlayingCardUI]:
-	var rank_to_cards := {}
+	var rank_to_cards: Dictionary = {} # rank -> Array (of PlayingCardUI)
 
 	for card_ui in cards:
-		var rank = card_ui.card.rank
-		if !rank_to_cards.has(rank):
+		var rank: int = card_ui.card.rank
+		if not rank_to_cards.has(rank):
 			rank_to_cards[rank] = []
-		rank_to_cards[rank].append(card_ui)
+		(rank_to_cards[rank] as Array).append(card_ui)
 
-	var pairs: Array[Array] = []
+	var pairs: Array = [] # Array of Array (untyped by necessity)
 
 	for rank in rank_to_cards.keys():
-		if rank_to_cards[rank].size() >= 2:
-			pairs.append(rank_to_cards[rank])
+		var group := rank_to_cards[rank] as Array
+		if group.size() >= 2:
+			pairs.append(group)
 
 	if pairs.size() < 2:
 		return []
 
-	# take the first two pairs found
-	return pairs[0].slice(0, 2) + pairs[1].slice(0, 2)
+	var result: Array[PlayingCardUI] = []
+	result.append_array((pairs[0] as Array).slice(0, 2))
+	result.append_array((pairs[1] as Array).slice(0, 2))
+
+	return result

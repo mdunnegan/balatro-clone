@@ -23,6 +23,9 @@ func scoring_cards(cards: Array[PlayingCardUI]) -> Array[PlayingCardUI]:
 
 	for rank in rank_to_cards.keys():
 		if rank_to_cards[rank].size() >= 2:
-			return rank_to_cards[rank].slice(0, 2)
+			return [
+				rank_to_cards[rank][0],
+				rank_to_cards[rank][1]
+			]
 
 	return []
