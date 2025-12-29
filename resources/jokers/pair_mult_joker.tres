@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="PairMultJoker" load_steps=2 format=3 uid="uid://0yhs6u77rjy1"]
+
+[ext_resource type="Script" uid="uid://jhor54f7s7mw" path="res://resources/jokers/pair_mult_joker.gd" id="1_jrdv5"]
+
+[resource]
+script = ExtResource("1_jrdv5")
+metadata/_custom_type_script = "uid://cguy6q0ckkq1l"

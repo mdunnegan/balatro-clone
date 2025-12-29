@@ -1,10 +1,12 @@
-class_name Score
+class_name ScoreManager
 extends GridContainer
 
 const NONE_HAND_TYPE = preload("res://resources/hand_types/none.tres")
 
-@onready var chips_label: Label = %Chips
-@onready var mult_label: Label = %Mult
+#@onready var chips_label: Label = %Chips
+#@onready var mult_label: Label = %Mult
+
+@onready var current_score_label: Label = %CurrentScore
 @onready var total_score_label: Label = %TotalScore
 
 @onready var chips: int
@@ -14,7 +16,6 @@ const NONE_HAND_TYPE = preload("res://resources/hand_types/none.tres")
 var hand_type: HandType = NONE_HAND_TYPE
 
 func _ready() -> void:
-	Events.card_scored.connect(_on_card_scored)
 	Events.hand_scored.connect(_on_hand_scored)
 	Events.hand_type_changed.connect(_on_hand_type_changed)
 	update_labels()
@@ -26,9 +27,16 @@ func _on_hand_type_changed(new_hand_type: HandType) -> void:
 	
 	update_labels()
 	
-func _on_card_scored(card_ui: PlayingCardUI):
-	chips += card_ui.card.chip_value()
+func add_chips(c: int) -> void:
+	chips += c
+	update_labels()
 	
+func add_mult(m: int) -> void:
+	mult += m
+	update_labels()
+	
+func multiply_mult(m: int) -> void:
+	mult += m
 	update_labels()
 	
 func _on_hand_scored() -> void:
@@ -36,8 +44,21 @@ func _on_hand_scored() -> void:
 	chips = 0
 	mult = 0
 	update_labels()
+	
+func reset_score() -> void:
+	chips = 0
+	mult = 0
+	update_labels()
+	
+func show_multiplied() -> void:
+	update_labels(true)
 
-func update_labels() -> void:
-	chips_label.text = str(chips)
-	mult_label.text = str(mult)
+func update_labels(multiply_nums = false) -> void:
+	
+	if multiply_nums:
+		current_score_label.text = str("%s" % str(chips * mult))
+	else:
+		current_score_label.text = str("%s x %s" % [chips, mult])
+		
 	total_score_label.text = str(total_score)
+	

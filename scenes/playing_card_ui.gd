@@ -56,7 +56,7 @@ func _on_playing_card_toggled(_card: PlayingCardUI, is_selected: bool) -> void:
 	else:
 		num_cards_selected -= 1
 	
-func _on_hand_played(_cards: Array[PlayingCardUI], _hand_type: HandType) -> void:
+func _on_hand_played(_cards: Array[PlayingCardUI], _hand_type: HandType, _jokers: Array[JokerUI]) -> void:
 	num_cards_selected = 0
 
 func _on_hand_discarded(_cards: Array[PlayingCardUI]) -> void:

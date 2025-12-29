@@ -2,6 +2,8 @@ class_name Blind
 extends Node2D
 
 const PLAYING_CARD_UI := preload("res://scenes/playing_card_ui.tscn")
+const JOKER_UI := preload("res://scenes/joker_ui.tscn")
+
 const FLUSH_FIVE_HAND_TYPE := preload("res://resources/hand_types/flush_five.tres")
 const FLUSH_HOUSE_HAND_TYPE := preload("res://resources/hand_types/flush_house.tres")
 const FIVE_OF_A_KIND_HAND_TYPE := preload("res://resources/hand_types/five_of_a_kind.tres")
@@ -21,12 +23,14 @@ const NONE_HAND_TYPE := preload("res://resources/hand_types/none.tres")
 @onready var play_button: Button = %PlayButton
 @onready var discard_button: Button = %DiscardButton
 @onready var card_play_area: HBoxContainer = %CardPlayArea
+@onready var joker_area: HBoxContainer = %JokerArea
 
 @export var max_hand_size: int = 8
 @export var deck: CardPile
 
 var selected_cards: Array[PlayingCardUI]
 var hand_types: Array[HandType]
+var jokers: Array[JokerUI]
 
 var current_hand_type: HandType
 
@@ -40,7 +44,11 @@ func _ready() -> void:
 	
 	# clear the placeholder cards
 	for c in hand.get_children():
-		c.queue_free()
+		c.free()
+		
+	# clear the placeholder jokers
+	for j in joker_area.get_children():
+		j.free()
 	
 	Events.playing_card_toggled.connect(_on_playing_card_toggled)
 	Events.hand_scored.connect(_on_hand_scored)
@@ -49,6 +57,13 @@ func _ready() -> void:
 	deck = CardPile.new()
 	deck.build_standard_deck()
 	deck.shuffle()
+	
+	# initialize pair joker
+	var joker: Joker = preload("res://resources/jokers/pair_mult_joker.tres")
+	var joker_ui := JOKER_UI.instantiate()
+	joker_ui.joker = joker
+	joker_area.add_child(joker_ui)
+	jokers.append(joker_ui)
 	
 	draw_cards(max_hand_size)
 	
@@ -69,7 +84,7 @@ func draw_cards(num_to_draw: int) -> void:
 		hand.add_child(playing_card_ui)	
 
 func _on_play_button_pressed() -> void:
-	Events.hand_played.emit(selected_cards, current_hand_type)
+	Events.hand_played.emit(selected_cards, current_hand_type, jokers)
 
 func _on_discard_button_pressed() -> void:
 	var num_selected = selected_cards.size()

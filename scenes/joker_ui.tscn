@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfviqt5wnihmo"]
+
+[ext_resource type="Theme" uid="uid://2s51onlwwdry" path="res://main_theme.tres" id="1_dg002"]
+[ext_resource type="Script" uid="uid://dgqoyan0n717p" path="res://scenes/joker_ui.gd" id="2_dg002"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_voxns"]
+font_size = 12
+
+[node name="JokerUI" type="Control"]
+custom_minimum_size = Vector2(25, 30)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -231.0
+offset_bottom = -114.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_dg002")
+script = ExtResource("2_dg002")
+
+[node name="Color" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.8175213, 0.8175213, 0.81752115, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "J1"
+label_settings = SubResource("LabelSettings_voxns")
+horizontal_alignment = 1
+vertical_alignment = 1
