@@ -1,6 +1,9 @@
 class_name Joker
 extends Resource
 
+func description() -> String:
+	return ""
+
 func applies_pre_hand(_hand_kind: HandType.HandKind) -> bool:
 	return false
 	

@@ -45,8 +45,9 @@ func _on_hand_played(played_cards: Array[PlayingCardUI], hand_type: HandType, jo
 	await apply_post_hand_jokers(jokers, hand_type.hand_kind)
 			
 	# display chips * mult product before adding to total score
-	await get_tree().create_timer(SEQUENCE_PAUSE_DURATION * 3).timeout
+	await get_tree().create_timer(SEQUENCE_PAUSE_DURATION * 2).timeout
 	score_manager.show_multiplied()
+	await get_tree().create_timer(SEQUENCE_PAUSE_DURATION * 2).timeout
 	
 	Events.hand_scored.emit()
 	

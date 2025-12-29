@@ -1,4 +1,4 @@
-class_name CardPile
+class_name PlayingCardPile
 extends Resource
 
 @export var cards: Array[PlayingCard] = []
