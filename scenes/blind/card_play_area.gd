@@ -29,7 +29,7 @@ func _on_hand_played(played_cards: Array[PlayingCardUI], hand_type: HandType, jo
 		
 	await get_tree().create_timer(SEQUENCE_PAUSE_DURATION * 2).timeout
 			
-	apply_pre_hand_jokers(jokers, hand_type.hand_kind)
+	await apply_pre_hand_jokers(jokers, hand_type.hand_kind)
 
 	# Per Card scoring
 	for card_ui in scoring_cards:
@@ -40,14 +40,14 @@ func _on_hand_played(played_cards: Array[PlayingCardUI], hand_type: HandType, jo
 		# pop the card
 		await pop_tween(card_ui)
 		
-		apply_card_jokers(card_ui, jokers, hand_type.hand_kind)
+		await apply_card_jokers(card_ui, jokers, hand_type.hand_kind)
 
-	apply_post_hand_jokers(jokers, hand_type.hand_kind)
+	await apply_post_hand_jokers(jokers, hand_type.hand_kind)
 			
 	# display chips * mult product before adding to total score
 	await get_tree().create_timer(SEQUENCE_PAUSE_DURATION * 3).timeout
 	score_manager.show_multiplied()
-		
+	
 	Events.hand_scored.emit()
 	
 func apply_pre_hand_jokers(jokers: Array[JokerUI], hand_kind: HandType.HandKind) -> void:

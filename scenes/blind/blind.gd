@@ -65,6 +65,13 @@ func _ready() -> void:
 	joker_area.add_child(joker_ui)
 	jokers.append(joker_ui)
 	
+	# initialize chips joker
+	var joker2: Joker = preload("res://resources/jokers/odd_chips_joker.tres")
+	var joker_ui2 := JOKER_UI.instantiate()
+	joker_ui2.joker = joker2
+	joker_area.add_child(joker_ui2)
+	jokers.append(joker_ui2)
+	
 	draw_cards(max_hand_size)
 	
 func _on_playing_card_toggled(card: PlayingCardUI, selected: bool) -> void:

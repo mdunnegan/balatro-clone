@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="MyJoker" load_steps=2 format=3 uid="uid://u2m6e1dv3lj"]
+
+[ext_resource type="Script" uid="uid://jbuc14a3j8cw" path="res://resources/jokers/odd_chips_joker.gd" id="1_nw0t5"]
+
+[resource]
+script = ExtResource("1_nw0t5")
+metadata/_custom_type_script = "uid://cguy6q0ckkq1l"
