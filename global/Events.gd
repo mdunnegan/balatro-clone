@@ -8,3 +8,5 @@ signal hand_played(cards: Array[PlayingCardUI], hand_type: HandType, jokers: Arr
 signal hand_discarded(cards: Array[PlayingCardUI])
 
 signal hand_scored
+
+signal blind_won

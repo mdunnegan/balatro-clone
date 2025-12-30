@@ -9,6 +9,7 @@ const NONE_HAND_TYPE := preload("res://resources/hand_types/none.tres")
 @onready var play_button: Button = %PlayButton
 @onready var discard_button: Button = %DiscardButton
 @onready var card_play_area: HBoxContainer = %CardPlayArea
+@onready var score_manager: ScoreManager = %ScoreManager
 
 @export var max_hand_size: int = 8
 @export var run_state: RunState
@@ -33,6 +34,7 @@ func _ready() -> void:
 
 func begin_blind() -> void:
 	draw_cards(max_hand_size)
+	score_manager.set_required_score(run_state.get_required_score())
 	
 func _on_playing_card_toggled(card: PlayingCardUI, selected: bool) -> void:
 	if selected:
@@ -70,7 +72,6 @@ func _on_hand_scored() -> void:
 	draw_cards(num_selected)
 	_set_hand_type()
 	_update_play_discard_buttons()
-	
 
 func _set_hand_type() -> void:
 	for hand_type: HandType in run_state.hand_types:

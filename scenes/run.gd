@@ -31,9 +31,10 @@ var all_layers: Array[CanvasLayer]
 
 var run_state: RunState = RunState.new()
 
-
 func _ready() -> void:
-	_create_hand_types()	
+	run_state.initialize_required_scores()
+	
+	_create_hand_types()
 	
 	run_state.jokers = []
 	
@@ -64,6 +65,8 @@ func _ready() -> void:
 	joker_ui2.joker = joker2
 	joker_area.add_child(joker_ui2)
 	run_state.jokers.append(joker)
+	
+	Events.blind_won.connect(_on_blind_won)
 
 func show_layer(layer_to_show: CanvasLayer) -> void:
 	for layer: CanvasLayer in all_layers:
@@ -78,13 +81,10 @@ func _on_blind_button_pressed() -> void:
 	blind.begin_blind()
 	show_layer(blind_layer)
 	
-func get_jokers() -> Array[JokerUI]:
-	var return_jokers: Array[JokerUI] = []
-	for joker: JokerUI in joker_area.get_children():
-		return_jokers.append(joker)
-	return return_jokers
-	
 func _on_blind_won() -> void:
+	print("Blind won!")
+	for blind: Blind in blind_layer.get_children():
+		blind.queue_free()
 	show_layer(shop_layer)
 	
 func _on_shop_finished() -> void:
@@ -104,3 +104,9 @@ func _create_hand_types() -> void:
 	run_state.hand_types.append(PAIR_HAND_TYPE)
 	run_state.hand_types.append(HIGH_CARD_HAND_TYPE)
 	run_state.hand_types.append(NONE_HAND_TYPE)
+
+func get_jokers() -> Array[JokerUI]:
+	var return_jokers: Array[JokerUI] = []
+	for joker: JokerUI in joker_area.get_children():
+		return_jokers.append(joker)
+	return return_jokers

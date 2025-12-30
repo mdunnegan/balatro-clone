@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmu5mjh3a65t2"]
+[gd_scene load_steps=8 format=3 uid="uid://bmu5mjh3a65t2"]
 
 [ext_resource type="Texture2D" uid="uid://1xps7kycymk2" path="res://art/background.png" id="1_ix3g0"]
 [ext_resource type="Script" uid="uid://7amx2dnihu1a" path="res://scenes/blind/blind.gd" id="1_pcol3"]
 [ext_resource type="PackedScene" uid="uid://cqddt278wal78" path="res://scenes/playing_card_ui.tscn" id="2_8asx0"]
 [ext_resource type="Script" uid="uid://cwb88whmkdchm" path="res://scenes/blind/hand.gd" id="3_quq1t"]
 [ext_resource type="Script" uid="uid://dxytpi6gpwkdh" path="res://scenes/blind/card_play_area.gd" id="5_s3l8s"]
-[ext_resource type="Script" uid="uid://cfr0qks5ifkf6" path="res://scenes/blind/score.gd" id="6_n7sra"]
+[ext_resource type="Script" uid="uid://cfr0qks5ifkf6" path="res://scenes/blind/score_manager.gd" id="6_n7sra"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_n7sra"]
 
 [node name="Blind" type="Node2D"]
 script = ExtResource("1_pcol3")
@@ -24,9 +26,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 53.0
-offset_top = 93.0
+offset_top = 98.0
 offset_right = 203.0
-offset_bottom = 123.0
+offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -54,11 +56,18 @@ unique_name_in_owner = true
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -35.0
+offset_top = -44.0
 offset_right = 46.0
-offset_bottom = 15.0
+offset_bottom = 33.0
 grow_vertical = 2
+scale = Vector2(0.8, 0.8)
 script = ExtResource("6_n7sra")
+
+[node name="RequiredScore" type="Label" parent="Scoring/ScoreManager"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "300"
+label_settings = SubResource("LabelSettings_n7sra")
 
 [node name="TotalScore" type="Label" parent="Scoring/ScoreManager"]
 unique_name_in_owner = true
@@ -92,12 +101,13 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 78.0
-offset_top = 125.0
-offset_right = 183.0
-offset_bottom = 143.0
+offset_left = 86.0
+offset_top = 129.0
+offset_right = 191.0
+offset_bottom = 147.0
 grow_horizontal = 2
 grow_vertical = 0
+scale = Vector2(0.8, 0.8)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PlayDiscardButtons"]
 layout_mode = 0
@@ -131,6 +141,7 @@ text = "Discard"
 unique_name_in_owner = true
 offset_right = 40.0
 offset_bottom = 23.0
+scale = Vector2(0.8, 0.8)
 
 [connection signal="pressed" from="PlayDiscardButtons/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="PlayDiscardButtons/HBoxContainer/DiscardButton" to="." method="_on_discard_button_pressed"]

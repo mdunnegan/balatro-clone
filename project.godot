@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="BalatroClone"
-run/main_scene="uid://bmu5mjh3a65t2"
+run/main_scene="uid://dn2s1xgmncu2h"
 config/features=PackedStringArray("4.5", "Mobile")
 
 [autoload]
